@@ -3,6 +3,103 @@
 
 st_buffers = ["Sunday", "Sparkle", "Bronya", "RMC", "Tingyun"]
 
+buffs = {
+  "Phainon": {
+    "base_atk": 562.72,
+    "atk_p": 195,
+    "atk": 450,
+    "p": 38.8,
+    "cr": 90,
+    "cd": 145,
+    "res": 0,
+  },
+  "relics": {
+    "atk_p": 48,
+    "cd": 16,
+    "p": 27
+  },
+  "lc": {
+    "base_atk": 529,
+    "atk_p": 64,
+    "p":24
+  },
+  "generic_st": {
+    "cd": 36,
+    "p": 32
+  },
+  "Sunday": {
+    "p": 80,
+    "cr": 20,
+    "cd": 97
+  },
+  "Sparkle": {
+    "atk_p": 15,
+    "p": 48,
+    "cd": 115,
+  },
+  "Bronya": {
+    "atk_p": 55,
+    "p": 76,
+    "cd": 70
+  },
+  "RMC": {
+    "p": 16,
+    "cr": 10,
+    "cd": 70,
+    "true_dmg": 30
+  },
+  "Tingyun": {
+    "atk": 810,
+    "p": 56,
+    "cd": 10
+  },
+  "Robin": {
+    "atk_p": 12, #lushaka
+    "atk": 1200,
+    "p": 50,
+    "cd": 20
+  },
+  "Cipher": {
+    "vuln": 40,
+    "true_dmg": 24,
+    # "def_shred": 12
+  },
+  "Tribbie": {
+    "vuln": 30,
+    "res_pen": 24
+  },
+  "RuanMei": {
+    "p": 68,
+    "res_pen": 25
+  },
+  "Yukong": {
+    "atk_p": 80,
+    "cr": 29.4,
+    "cd": 80.2
+  },
+  "Aventurine": {
+    "p": 40,
+    "cd": 10
+  },
+  "FuXuan": {
+    "p": 40,
+    "cd": 10,
+    "cr": 12
+  },
+  "Huohuo": {
+    "p": 40,
+    "atk_p": 40,
+    "cd": 25
+  }, 
+  "Gallagher": {
+    "p": 40,
+    "cd": 25
+  }, 
+  "Jiaoqiu": {
+    "vuln": 38 #assumes 20% is ult damage and it's evenly distributed
+  }
+}
+
 image_urls = {
   "Tribbie-Tingyun-Huohuo": "https://drive.google.com/uc?export=view&id=1-2wggafGpkohWBCKzgbp-4yOaglu_XX-",
   "Robin-Yukong-Tingyun": "https://drive.google.com/uc?export=view&id=1-B2ZmLV-8XmrTYqGz5mXxvNlV7nZWXng",
@@ -183,7 +280,42 @@ image_urls = {
   "Yukong-Sunday-Tingyun": "https://drive.google.com/uc?export=view&id=1xj6b5P1e3HfglhOLH458ItNMNzelUO4f",
   "Robin-RMC-FuXuan": "https://drive.google.com/uc?export=view&id=1yXvj9ZbqXZ0jpD-xn9SWZuzv6J81Lv0S",
   "Yukong-Sparkle-Aventurine": "https://drive.google.com/uc?export=view&id=1z9BrkDZ6yOEOAVw3MHjdvrQIHaydXVwa",
-  "Cipher-Bronya-Huohuo": "https://drive.google.com/uc?export=view&id=1zHmFAOBcua9qQxM04YEy7RNxT-fiDaFt"
+  "Cipher-Bronya-Huohuo": "https://drive.google.com/uc?export=view&id=1zHmFAOBcua9qQxM04YEy7RNxT-fiDaFt",
+  "Jiaoqiu-Tingyun-Aventurine": "https://drive.google.com/file/d/11pQ0QnTl9yjmbxMmJsfetnOnCsejQ0aP/view?usp=sharing",
+  "Jiaoqiu-Bronya-RMC": "https://drive.google.com/file/d/15Rbxij31XZUGkRAAfOgwbyQD3HzJrCz8/view?usp=sharing",
+  "Jiaoqiu-Sunday-Gallagher": "https://drive.google.com/file/d/15wAZu3sz0mCO4Fxf9VwEkculRIa3yjL7/view?usp=sharing",
+  "Jiaoqiu-Sparkle-Bronya": "https://drive.google.com/file/d/18WYAVldI_yinKOLEMtnP9mLgvlBWbShK/view?usp=sharing",
+  "Jiaoqiu-Bronya-Tingyun": "https://drive.google.com/file/d/18l6xjvi3rV90HSNX5r9NT78QRDexg74J/view?usp=sharing",
+  "Jiaoqiu-Bronya-Gallagher": "https://drive.google.com/file/d/19L6xaGQ3Je7QzkDecmHdR4kMHh-ZCLKU/view?usp=sharing",
+  "Jiaoqiu-RMC-Huohuo": "https://drive.google.com/file/d/19iTGUBhNDlgGeTc6O2DW8B7qPFyrm00R/view?usp=sharing",
+  "Jiaoqiu-Bronya-Huohuo": "https://drive.google.com/file/d/1A8likDCNT9BL5fEllgOcoWyejuI_NhrK/view?usp=sharing",
+  "Jiaoqiu-Sunday-Sparkle": "https://drive.google.com/file/d/1BR0ZMwLGAHMmnMpHUIU4YQAJb6NRcoxc/view?usp=sharing",
+  "Jiaoqiu-Sunday-Huohuo": "https://drive.google.com/file/d/1BRIOqajL9pGdaot5u0vCtrJqQdFQaatO/view?usp=sharing",
+  "Jiaoqiu-Sparkle-Huohuo": "https://drive.google.com/file/d/1DZG--cIH7YA_rO2_iw3VI8PHs2x_c1mP/view?usp=sharing",
+  "Jiaoqiu-Bronya-FuXuan": "https://drive.google.com/file/d/1HNVEdFrQ3yQTLhqFGtlwiNJz-4o38fbF/view?usp=sharing",
+  "Jiaoqiu-RMC-FuXuan": "https://drive.google.com/file/d/1HqqX-ZluSA0nr7CSuUfQYTn6S6h2awil/view?usp=sharing",
+  "Jiaoqiu-Sparkle-Aventurine": "https://drive.google.com/file/d/1IFnc7AtB3vMZR1gCD1gvBsvbdkVpREDS/view?usp=sharing",
+  "Jiaoqiu-Sparkle-FuXuan": "https://drive.google.com/file/d/1NsgMcDi-lwNaYbrD1E9v1Cjk588RmJrD/view?usp=sharing",
+  "Robin-Jiaoqiu-Sunday": "https://drive.google.com/file/d/1OYMb1gwRdQLMnTGeZQYyLWCfyHq6ep5t/view?usp=sharing",
+  "Jiaoqiu-Sparkle-RMC": "https://drive.google.com/file/d/1ULMCGjmzySajLv3CM9SJSw52wEA7dDPY/view?usp=sharing",
+  "Jiaoqiu-RMC-Tingyun": "https://drive.google.com/file/d/1WNcqP0vJaqRpzToZN6qL2hNpU_dOEyKF/view?usp=sharing",
+  "Robin-Jiaoqiu-RMC": "https://drive.google.com/file/d/1WPk8RMw7PTWZEQ1zUjDFOdDbujWYwNoR/view?usp=sharing",
+  "Jiaoqiu-Sparkle-Tingyun": "https://drive.google.com/file/d/1cTdOrH0IYMfjmVMROmNnE52ybX73eVAK/view?usp=sharing",
+  "Jiaoqiu-RMC-Aventurine": "https://drive.google.com/file/d/1e4BAXIagMp-8ePFPcOj1vXFqq1TaUlxj/view?usp=sharing",
+  "Jiaoqiu-Sunday-FuXuan": "https://drive.google.com/file/d/1f3RGVTIIWSU3ojaIb0sXsNy_Ul4jUjXz/view?usp=sharing",
+  "Robin-Jiaoqiu-Bronya": "https://drive.google.com/file/d/1ief6Y7Sqv2SIwluFNiNq2eZI_8n_zPpg/view?usp=sharing",
+  "Robin-Jiaoqiu-Tingyun": "https://drive.google.com/file/d/1mHyQjUGvqPZTY5dyq7ty7KtVPBpGL1fz/view?usp=sharing",
+  "Jiaoqiu-Sunday-RMC": "https://drive.google.com/file/d/1qO-yQPT8W5Vd9l3SCubQi1NMPe1negm4/view?usp=sharing",
+  "Jiaoqiu-Tingyun-Huohuo": "https://drive.google.com/file/d/1qP4lij2M4L8xrozFq51o6bFC-HX96fk3/view?usp=sharing",
+  "Jiaoqiu-Sunday-Bronya": "https://drive.google.com/file/d/1qh0ursxl8VADFvGZucyIIrjR9mLoZ723/view?usp=sharing",
+  "Robin-Jiaoqiu-Sparkle": "https://drive.google.com/file/d/1rVO0azIKQzulpiyiC_vm5QDJmmYtd2ce/view?usp=sharing",
+  "Jiaoqiu-Sunday-Aventurine": "https://drive.google.com/file/d/1u787SPEgp3Fi9raf-ZCk99U9_jAit1a2/view?usp=sharing",
+  "Jiaoqiu-RMC-Gallagher": "https://drive.google.com/file/d/1wmLn86Vk_9Pw9Kol_CnCGAk6yHuwA4Yd/view?usp=sharing",
+  "Jiaoqiu-Tingyun-FuXuan": "https://drive.google.com/file/d/1wqUeIRRHlqXkibmImcF0IM2xbVVv3G5d/view?usp=sharing",
+  "Jiaoqiu-Sunday-Tingyun": "https://drive.google.com/file/d/1xZ-SNAbFdGlTZS3nTtVYZuKmxYkceupc/view?usp=sharing",
+  "Jiaoqiu-Bronya-Aventurine": "https://drive.google.com/file/d/1y0OadfitZSFMkQN8KyLpmlV9aSE6Iqyy/view?usp=sharing",
+  "Jiaoqiu-Sparkle-Gallagher": "https://drive.google.com/file/d/1yV5iJffU1905qQCBnotOwy_AIxgWRqiI/view?usp=sharing",
+  "Jiaoqiu-Tingyun-Gallagher": "https://drive.google.com/file/d/1yk7qrIMIq7OmM-_sff9VBjKKX8jnLnXD/view?usp=sharing",
 }
 
 stacks = {
@@ -301,98 +433,4 @@ stacks = {
   "Yukong-RMC-FuXuan": [3,5],
   "Yukong-RMC-Huohuo": [7,7],
   "Yukong-RMC-Gallagher": [4,4]
-}
-
-buffs = {
-  "Phainon": {
-    "base_atk": 562.72,
-    "atk_p": 195,
-    "atk": 450,
-    "p": 38.8,
-    "cr": 90,
-    "cd": 145,
-    "res": 0,
-  },
-  "relics": {
-    "atk_p": 48,
-    "cd": 16,
-    "p": 27
-  },
-  "lc": {
-    "base_atk": 529,
-    "atk_p": 64,
-    "p":24
-  },
-  "generic_st": {
-    "cd": 36,
-    "p": 32
-  },
-  "Sunday": {
-    "p": 80,
-    "cr": 20,
-    "cd": 97
-  },
-  "Sparkle": {
-    "atk_p": 15,
-    "p": 48,
-    "cd": 115,
-  },
-  "Bronya": {
-    "atk_p": 55,
-    "p": 76,
-    "cd": 70
-  },
-  "RMC": {
-    "p": 16,
-    "cr": 10,
-    "cd": 70,
-    "true_dmg": 30
-  },
-  "Tingyun": {
-    "atk": 810,
-    "p": 56,
-    "cd": 10
-  },
-  "Robin": {
-    "atk_p": 12, #lushaka
-    "atk": 1200,
-    "p": 50,
-    "cd": 20
-  },
-  "Cipher": {
-    "vuln": 40,
-    "true_dmg": 24,
-    # "def_shred": 12
-  },
-  "Tribbie": {
-    "vuln": 30,
-    "res_pen": 24
-  },
-  "RuanMei": {
-    "p": 68,
-    "res_pen": 25
-  },
-  "Yukong": {
-    "atk_p": 80,
-    "cr": 29.4,
-    "cd": 80.2
-  },
-  "Aventurine": {
-    "p": 40,
-    "cd": 10
-  },
-  "FuXuan": {
-    "p": 40,
-    "cd": 10,
-    "cr": 12
-  },
-  "Huohuo": {
-    "p": 40,
-    "atk_p": 40,
-    "cd": 25
-  }, 
-  "Gallagher": {
-    "p": 40,
-    "cd": 25
-  }, 
 }

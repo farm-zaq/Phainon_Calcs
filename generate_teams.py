@@ -2,7 +2,7 @@ import base_data
 
 def generate_grouped_teams():
   base_data.st_buffers = ["Sunday", "Sparkle", "Bronya", "RMC", "Tingyun"]
-  nt_buffers = ["Cipher", "Tribbie", "RuanMei", "Yukong"]
+  nt_buffers = ["Cipher", "Tribbie", "Jiaoqiu", "RuanMei", "Yukong"]
   nt_buffers_w_robin = ["Robin"] + nt_buffers
   sustains = ["Aventurine", "FuXuan", "Huohuo", "Gallagher"]
 
