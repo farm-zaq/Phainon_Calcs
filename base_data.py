@@ -16,7 +16,7 @@ buffs = {
   "relics": {
     "atk_p": 48,
     "cd": 16,
-    "p": 27
+    "p": 36
   },
   "lc": {
     "base_atk": 529,
