@@ -3,8 +3,8 @@ import os
 import base_data
 import generate_teams
  
-def score_team(team):
-  team_buffs = team + ["Phainon", "relics", "lc", "generic_st"]
+def score_team(team, lc=["fall"]):
+  team_buffs = team + ["Phainon", "relics", "generic_st"] + lc
  
   team_stats = {
     "base_atk": 0.0,
@@ -28,7 +28,7 @@ def score_team(team):
  
   atk_mult = team_stats["base_atk"] * (1 + team_stats["atk_p"]/100) + team_stats["atk"]
  
-  if team[0] not in base_data.st_buffers and team[1] == "Bronya" and team[2] == "RMC":
+  if team[0] not in base_data.st_buffers and team[1] == "Bronya" and team[2] == "RMC" and "Robin" not in team:
     team_stats["cd"] -= 18
   if team_stats["cr"] > 100:
     team_stats["cd"] +=  (team_stats["cr"] - 100) * 2
@@ -81,3 +81,5 @@ if __name__ == "__main__":
 
   ungrouped_teams = generate_teams.generate_ungrouped_teams()
   output_teams(ungrouped_teams, "top_ten", limit=10)
+
+  print(score_team(baseline_score))

@@ -18,10 +18,15 @@ buffs = {
     "cd": 16,
     "p": 36
   },
-  "lc": {
+  "fall": {
     "base_atk": 529,
     "atk_p": 64,
     "p":24
+  },
+  "sig": {
+    "base_atk": 687.96,
+    "def_shred": 18,
+    "p": 60
   },
   "generic_st": {
     "cd": 36,
