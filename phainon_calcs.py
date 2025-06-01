@@ -3,8 +3,8 @@ import os
 import base_data
 import generate_teams
  
-def score_team(team, lc=["fall"]):
-  team_buffs = team + ["Phainon", "relics", "generic_st"] + lc
+def score_team(team, lc="Fall"):
+  team_buffs = team + ["Phainon", "relics", "generic_st"] + [lc]
  
   team_stats = {
     "base_atk": 0.0,
@@ -81,5 +81,3 @@ if __name__ == "__main__":
 
   ungrouped_teams = generate_teams.generate_ungrouped_teams()
   output_teams(ungrouped_teams, "top_ten", limit=10)
-
-  print(score_team(baseline_score))

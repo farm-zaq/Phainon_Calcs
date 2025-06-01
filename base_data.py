@@ -2,6 +2,11 @@
 #When I started, I thought "Oh, I only have 10 or so entries, I can just make a dictionary
 
 st_buffers = ["Sunday", "Sparkle", "Bronya", "RMC", "Tingyun"]
+nt_buffers = ["Cipher", "Tribbie", "Jiaoqiu", "RuanMei", "Yukong"]
+nt_buffers_w_robin = ["Robin"] + nt_buffers
+sustains = ["Aventurine", "FuXuan", "Huohuo", "Gallagher"]
+
+lcs = ["Fall", "S1"]
 
 buffs = {
   "Phainon": {
@@ -18,12 +23,12 @@ buffs = {
     "cd": 16,
     "p": 36
   },
-  "fall": {
+  "Fall": {
     "base_atk": 529,
     "atk_p": 64,
     "p":24
   },
-  "sig": {
+  "S1": {
     "base_atk": 687.96,
     "def_shred": 18,
     "p": 60
