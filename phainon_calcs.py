@@ -140,11 +140,6 @@ def output_teams(teams, file_name, limit=None):
   
   folder_path = "output/csvs"
   os.makedirs(folder_path, exist_ok=True)
-
-  # with open(f"{folder_path}/{file_name}.csv", "w", newline="") as file:
-  #   for row in filtered_teams:
-  #       line = ",".join(str(cell) for cell in row)
-  #       file.write(line + "\n")
   
   with open(f"{folder_path}/{file_name}.csv", "w", newline="", encoding="utf-8") as file:
     writer = csv.writer(file, quoting=csv.QUOTE_ALL)
