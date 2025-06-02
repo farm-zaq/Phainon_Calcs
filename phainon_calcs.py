@@ -48,8 +48,66 @@ def score_team(team, lc="Fall", atk_boots=False):
   score = atk_mult * crit_mult * p_mult * res_mult * def_mult * vuln_mult * td_mult
   return score
 
-def get_coreflame(team, minus_speed):
-  return ["?", "?"]
+def get_coreflame(team, atk_boots):
+  lost_turns = 0
+  full_advances = 0
+  half_advances = 0
+  sp = 4
+  good_sp = 4
+  extra_users = 0
+  stacks = 0
+  has_robin = "Robin" in team
+  for name in team:
+    if base_data.rotation_data[name]["aa"] == "always":
+      full_advances += 1
+      if has_robin:
+        full_advances += 1
+    elif base_data.rotation_data[name]["aa"] == "once":
+      full_advances += 1
+    elif base_data.rotation_data[name]["aa"] == "atk_boots":
+      half_advances += 1
+      if has_robin:
+        half_advances += 1
+    elif base_data.rotation_data[name]["aa"] == "team":
+      full_advances += 1
+
+    sp += base_data.rotation_data[name]["sp"]
+    good_sp += base_data.rotation_data[name]["good_sp"]
+    stacks += base_data.rotation_data[name]["stacks"]
+    if has_robin:
+      sp += base_data.rotation_data[name]["robin_sp"]
+      good_sp += base_data.rotation_data[name]["good_robin_sp"]
+      stacks += base_data.rotation_data[name]["robin_stacks"]
+
+    if base_data.rotation_data[name]["can_use_extra"] == "Always":
+      extra_users += 1
+      if has_robin:
+        extra_users += 1
+    if base_data.rotation_data[name]["can_use_extra"] == "Once" and has_robin:
+      extra_users += 1
+  
+  if full_advances > 0 and half_advances == 0 and atk_boots:
+    lost_turns += 1
+    if has_robin:
+      lost_turns = 2
+  
+  good_stacks = stacks
+  
+  phainon_turns = 1 + full_advances - lost_turns
+  sp += phainon_turns
+  good_sp += phainon_turns
+  skills = min(phainon_turns, sp//2)
+  good_skills = min(phainon_turns, good_sp//2)
+  sp -= skills * 2
+  good_sp -= good_skills * 2
+  stacks += skills * 2
+  good_stacks += good_skills * 2
+
+  stacks += min(extra_users, sp//2)
+  good_stacks += min(extra_users, good_sp//2)
+
+
+  return [stacks, good_stacks]
  
 def output_teams(teams, file_name, limit=None):
   filtered_teams = []
@@ -58,13 +116,11 @@ def output_teams(teams, file_name, limit=None):
     image_url = f'=IMAGE("{base_data.image_urls[team_name]}")'
     score = score_team(team)
     percent = int(score/baseline_score * 100)
-    if team_name in base_data.stacks:
-      stack_rows = base_data.stacks[team_name]
-    else:
-      stack_rows = ["?", "?"]
+    spd_stacks = get_coreflame(team, False)
+    atk_stacks = get_coreflame(team, True)
     atk_boot_score = score_team(team, atk_boots=True)
     atk_boot_percent = int(atk_boot_score/baseline_score * 100)
-    team_row = [team_name, image_url, percent] + stack_rows + [atk_boot_percent] + stack_rows
+    team_row = [team_name, image_url, percent] + spd_stacks + [atk_boot_percent] + atk_stacks
     filtered_teams.append(team_row)
   filtered_teams = sorted(filtered_teams, key=lambda x: x[2], reverse=True)
   for i in range(len(filtered_teams)):
