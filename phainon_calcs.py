@@ -28,7 +28,7 @@ def score_team(team, lc="Fall"):
  
   atk_mult = team_stats["base_atk"] * (1 + team_stats["atk_p"]/100) + team_stats["atk"]
  
-  if team[0] not in base_data.st_buffers and team[1] == "Bronya" and team[2] == "RMC" and "Robin" not in team:
+  if team[0] not in base_data.st_buffers and team[1] == "Bronya" and team[2] == "RMC":
     team_stats["cd"] -= 18
   if team_stats["cr"] > 100:
     team_stats["cd"] +=  (team_stats["cr"] - 100) * 2
