@@ -1,6 +1,6 @@
 # If you're here to check my math.
 
-That's valid, I make mistakes.
+That's valid; I make mistakes.
 
 For builds, base stats, and buff packages, look at the buffs object in base_data.py
 
