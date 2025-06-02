@@ -44,6 +44,11 @@ def score_team(team, lc="Fall", atk_boots=False):
   def_mult = 100/(115 * (1 - team_stats["def_shred"]/100) + 100)
   vuln_mult = 1.0 + team_stats["vuln"]/100
   td_mult = 1.0 + team_stats["true_dmg"]/100
+
+  if team == ["Sunday", "Bronya"]:
+    print("ATK:\t\t", atk_mult)
+    print("Extra Percent:\t", team_stats["p"])
+    print("CD:\t\t", 100 * (crit_mult - 1))
  
   score = atk_mult * crit_mult * p_mult * res_mult * def_mult * vuln_mult * td_mult
   return score
@@ -154,3 +159,5 @@ if __name__ == "__main__":
 
   ungrouped_teams = generate_teams.generate_ungrouped_teams()
   output_teams(ungrouped_teams, "top_ten", limit=10)
+
+  score_team(["Sunday", "Bronya"])
