@@ -23,6 +23,9 @@ buffs = {
     "cd": 16,
     "p": 36
   },
+  "atk_boots": {
+    "atk_p": 43.2
+  },
   "Fall": {
     "base_atk": 529,
     "atk_p": 64,

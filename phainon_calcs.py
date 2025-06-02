@@ -2,9 +2,13 @@ import os
 
 import base_data
 import generate_teams
+import csv
  
-def score_team(team, lc="Fall"):
+def score_team(team, lc="Fall", atk_boots=False):
   team_buffs = team + ["Phainon", "relics", "generic_st"] + [lc]
+
+  if atk_boots:
+    team_buffs += ["atk_boots"]
  
   team_stats = {
     "base_atk": 0.0,
@@ -43,6 +47,9 @@ def score_team(team, lc="Fall"):
  
   score = atk_mult * crit_mult * p_mult * res_mult * def_mult * vuln_mult * td_mult
   return score
+
+def get_coreflame(team, minus_speed):
+  return ["?", "?"]
  
 def output_teams(teams, file_name, limit=None):
   filtered_teams = []
@@ -55,11 +62,17 @@ def output_teams(teams, file_name, limit=None):
       stack_rows = base_data.stacks[team_name]
     else:
       stack_rows = ["?", "?"]
-    filtered_teams.append([team_name, image_url, percent] + stack_rows)
+    atk_boot_score = score_team(team, atk_boots=True)
+    atk_boot_percent = int(atk_boot_score/baseline_score * 100)
+    team_row = [team_name, image_url, percent] + stack_rows + [atk_boot_percent] + stack_rows
+    filtered_teams.append(team_row)
   filtered_teams = sorted(filtered_teams, key=lambda x: x[2], reverse=True)
   for i in range(len(filtered_teams)):
     filtered_teams[i][2] = f"{filtered_teams[i][2]}%"
-  filtered_teams = [["", "Team", "Damage", "Coreflame", "Max Coreflame"]] + filtered_teams
+    filtered_teams[i][5] = f"{filtered_teams[i][5]}%"
+  for i in range(len(filtered_teams)):
+    filtered_teams[i] = filtered_teams[i][0:2] + [""] + filtered_teams[i][2:5] + [""] + filtered_teams[i][5:]
+  filtered_teams = [["", "Team", "", "Damage\n(Spd Boots)", "Coreflame\n(Spd Boots)", "Max Coreflame\n(Spd Boots)", "", "Damage\n(Atk Boots)", "Coreflame\n(Atk Boots)", "Max Coreflame\n(Atk Boots)"]] + filtered_teams
   filtered_teams = [row[1:] for row in filtered_teams]
   if limit:
     filtered_teams = filtered_teams[:limit+1]
@@ -67,10 +80,14 @@ def output_teams(teams, file_name, limit=None):
   folder_path = "output/csvs"
   os.makedirs(folder_path, exist_ok=True)
 
-  with open(f"{folder_path}/{file_name}.csv", "w", newline="") as file:
-    for row in filtered_teams:
-        line = ",".join(str(cell) for cell in row)
-        file.write(line + "\n")
+  # with open(f"{folder_path}/{file_name}.csv", "w", newline="") as file:
+  #   for row in filtered_teams:
+  #       line = ",".join(str(cell) for cell in row)
+  #       file.write(line + "\n")
+  
+  with open(f"{folder_path}/{file_name}.csv", "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file, quoting=csv.QUOTE_ALL)
+    writer.writerows(filtered_teams)
 
 if __name__ == "__main__":
   baseline_score = score_team(["Bronya", "RMC", "Tingyun"])
