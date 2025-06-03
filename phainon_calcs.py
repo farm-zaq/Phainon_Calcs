@@ -60,7 +60,7 @@ def get_coreflame(team, atk_boots):
   sp = 4
   good_sp = 4
   extra_users = 0
-  stacks = 0
+  stacks = 1
   has_robin = "Robin" in team
   for name in team:
     if base_data.rotation_data[name]["aa"] == "always":
