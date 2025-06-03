@@ -10,7 +10,7 @@ lcs = ["Fall", "S1"]
 
 buffs = {
   "Phainon": {
-    "base_atk": 562.72,
+    "base_atk": 543.312,
     "atk_p": 195,
     "atk": 450,
     "p": 38.8,
@@ -91,21 +91,21 @@ buffs = {
     "cd": 80.2
   },
   "Aventurine": {
-    "p": 40,
+    "p": 45,
     "cd": 10
   },
   "FuXuan": {
-    "p": 40,
+    "p": 45,
     "cd": 10,
     "cr": 12
   },
   "Huohuo": {
-    "p": 40,
+    "p": 45,
     "atk_p": 40,
     "cd": 25
   }, 
   "Gallagher": {
-    "p": 40,
+    "p": 45,
     "cd": 25
   }, 
   "Jiaoqiu": {
