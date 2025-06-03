@@ -101,16 +101,26 @@ def get_coreflame(team, atk_boots):
   phainon_turns = 1 + full_advances - lost_turns
   sp += phainon_turns
   good_sp += phainon_turns
+
+  all_skills = phainon_turns >= sp//2
   skills = min(phainon_turns, sp//2)
+  all_good_skills = phainon_turns >= good_sp//2
   good_skills = min(phainon_turns, good_sp//2)
+
   sp -= skills * 2
   good_sp -= good_skills * 2
   stacks += skills * 2
   good_stacks += good_skills * 2
+  
+  if has_robin and sp >= 1 and not all_skills and ("Bronya" in team or "Sunday" in team):
+    sp -= 1
+    stacks += 1
+  if has_robin and good_sp >= 1 and not all_good_skills and ("Bronya" in team):
+    good_sp -=1
+    good_stacks += 1
 
   stacks += min(extra_users, sp//2)
   good_stacks += min(extra_users, good_sp//2)
-
 
   return [stacks, good_stacks]
  
